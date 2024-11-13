@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Kopi & Teh Ordering Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHWWGMEC20"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SHWWGMEC20');
+    </script>
+</head>
+<body>
+    <div class="banner">
+        <img src="./Pic/kopi.jpg">
+    </div>
+    
+    <div class="container">
+        <h1>Local Kopi & Teh Ordering Guide</h1>
+        
+        <h2>Singapore Breakfast Culture</h2>
+        <p>
+            When visiting Singapore, one must experience the local breakfast culture, which typically consists of kaya toast, soft-boiled eggs, and a cup of kopi (coffee) or teh (tea). This iconic breakfast set is a staple in Singaporean cuisine and can be found in numerous kopitiams (coffee shops) across the island.
+        </p>
+        <p>
+            Kaya toast is made with thin slices of toasted bread spread with kaya (a sweet coconut egg jam) and a slice of cold butter. It's often served alongside soft-boiled eggs seasoned with dark soy sauce and white pepper. The perfect accompaniment to this delightful combination is a cup of kopi or teh.
+        </p>
+
+        <h2>Kopi and Teh: A Brief Background</h2>
+        <p>
+            Kopi and teh are more than just coffee and tea; they're an integral part of Singapore's food culture. Kopi is a strong Robusta coffee brew, while teh is made from black tea leaves. Both are typically served with condensed milk and sugar, creating a rich and sweet flavour profile.
+        </p>
+        <p>
+            The naming conventions for kopi and teh can be confusing for tourists, as they use a mix of Hokkien, Malay, and English terms. For example, "kopi o" means black coffee with sugar, while "teh c" refers to tea with evaporated milk and sugar.
+        </p>
+
+        <h2>Ready to order your kopi or teh like a local?</h2>
+        <p>
+            Use our interactive guide below to customize your drink and learn how to order it in true Singaporean style!
+        </p>
+
+        <hr/>
+
+        <div id="orderingSteps">
+            <div class="step" id="step1">
+                <h3>Choose type of drink</h3>
+                <button onclick="selectOption('drinkType', 'kopi')">Kopi (Coffee)</button>
+                <button onclick="selectOption('drinkType', 'teh')">Teh (Tea)</button>
+            </div>
+
+            <div class="step" id="step2">
+                <h3>Choose intensity of drink</h3>
+                <button onclick="selectOption('intensity', 'normal')">Normal</button>
+                <button onclick="selectOption('intensity', 'gau')">Stronger (Gau)</button>
+                <button onclick="selectOption('intensity', 'po')">Less strong (Po)</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+
+            <div class="step" id="step3">
+                <h3>Choose condiment</h3>
+                <button onclick="selectOption('condiment', 'sugar')">Sugar Only</button>
+                <button onclick="selectOption('condiment', 'condensed')">Condensed milk (sweet)</button>
+                <button onclick="selectOption('condiment', 'evaporated')">Evaporated milk</button>
+                <button onclick="selectOption('condiment', 'butter')">Butter</button>
+                <button onclick="selectOption('condiment', 'none')">None</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+
+            <div class="step" id="step4">
+                <h3>Add sugar?</h3>
+                <button onclick="selectOption('sugarOption', 'sugar')">Sugar</button>
+                <button onclick="selectOption('sugarOption', 'none')">None</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+
+            <div class="step" id="step5">
+                <h3>Choose sweetness level</h3>
+                <button onclick="selectOption('sweetness', 'normal')">Normal</button>
+                <button onclick="selectOption('sweetness', 'less')">Less sweet (Siew dai)</button>
+                <button onclick="selectOption('sweetness', 'more')">More sweet (Gah dai)</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+
+            <div class="step" id="step6">
+                <h3>Add condensed milk?</h3>
+                <button onclick="selectOption('condensedMilk', 'yes')">Yes</button>
+                <button onclick="selectOption('condensedMilk', 'no')">No</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+        
+            <div class="step" id="step7">
+                <h3>Hot or cold drink?</h3>
+                <button onclick="selectOption('temperature', 'hot')">Hot drink</button>
+                <button onclick="selectOption('temperature', 'cold')">Cold drink</button>
+                <div class="back-button-container">
+                    <button class="back-button" onclick="goBack()">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result"></div>
+
+        <div id="resetButton">
+            <button onclick="resetChoices()">Reset Choices</button>
+        </div>
+    
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f1e8;
+}
+
+h1, h2 {
+    color: #8b4513;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+    margin-bottom: 20px;
+ /*   width: 100%;     <to be deleted>
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;*/ 
+}
+
+button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.back-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.back-button {
+    background-color: #ed9110;
+}
+
+.back-button:hover {
+    background-color: #ec971f;
+}
+
+#result {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 20px 0;
+    text-align: center;
+    display: none;
+}
+
+#resetButton {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+#resetButton button {
+    background-color: #f44336;
+}
+
+#resetButton button:hover {
+    background-color: #d32f2f;
+}
+
+#orderingSteps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    max-height: 280px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
