@@ -1,6 +1,32 @@
 let order = {};
 let currentStep = 1;
 
+//new codes
+function updateCondimentOptions(drinkType) {
+    const condimentButtons = document.getElementById('condimentButtons');
+    condimentButtons.innerHTML = ''; // Clear existing buttons
+
+    const options = drinkType === 'teh' ? 
+        ['sugar', 'condensed', 'evaporated', 'none'] : 
+        ['sugar', 'condensed', 'evaporated', 'butter', 'none'];
+
+    const labels = {
+        'sugar': 'Sugar Only',
+        'condensed': 'Condensed milk (sweet)',
+        'evaporated': 'Evaporated milk',
+        'butter': 'Butter',
+        'none': 'None'
+    };
+
+    options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = labels[option];
+        button.onclick = () => selectOption('condiment', option);
+        condimentButtons.appendChild(button);
+    });
+}
+//new codes
+
 function selectOption(step, option) {
     order[step] = option;
     document.getElementById(`step${currentStep}`).style.display = 'none';
@@ -10,6 +36,7 @@ function selectOption(step, option) {
     switch(step) {
         case 'drinkType':
             nextStep = 2;
+            updateCondimentOptions(option);     //update condiment options
             break;
         case 'intensity':
             nextStep = 3;
@@ -233,6 +260,8 @@ function resetChoices() {
     order = {};
     currentStep = 1;
 
+    updateCondimentOptions('');//new codes reset condiment options
+
     for (let i = 1; i <= 7; i++) {
         document.getElementById(`step${i}`).style.display = 'none';
     }
@@ -256,11 +285,20 @@ function goBack() {
         // Special handling for going back from certain steps
         if (currentStep === 3) {
             document.getElementById('step3').style.display = 'block';
+            updateCondimentOptions(order.drinkType); // Update condiment options when going back to step 3
         } else if (currentStep === 4 && order.condiments !== 'evaporated') {
             goBack(); // Skip step 4 if not needed
         } else {
             document.getElementById(`step${currentStep}`).style.display = 'block';
         }
+/*        if (currentStep === 3) {
+            document.getElementById('step3').style.display = 'block';
+        } else if (currentStep === 4 && order.condiments !== 'evaporated') {
+            goBack(); // Skip step 4 if not needed
+        } else {
+            document.getElementById(`step${currentStep}`).style.display = 'block';
+        }  */
+       
     }
 
     // Hide result and reset button if they were visible
