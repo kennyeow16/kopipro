@@ -102,3 +102,11 @@ button:hover {
     height: auto;
     object-fit: cover;
 }
+
+#componentLiner {
+    color: grey;
+    font-size: 18px;
+    font-style: italic;
+    font-weight:normal;
+    padding-top: 0px;
+}

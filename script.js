@@ -51,17 +51,41 @@ function selectOption(step, option) {
 
 function generateResult() {
     let result = '';
+    let component = ''; //newly added to display component
     let phonetic = '';
 
     // Drink type
     result += order.drinkType.charAt(0).toUpperCase() + order.drinkType.slice(1);
     phonetic += order.drinkType.toUpperCase() + ' ';
 
+    //newly added to display component
+    switch(order.drinkType) {    
+        case 'kopi':
+            if (order.intensity === 'gau') {
+                component += 'strong coffee';
+            } else if (order.intensity === 'po') {
+                component += 'coffee + water';
+            } else {
+            component += 'coffee';
+            }
+        break;
+        case 'teh':
+            if (order.intensity === 'gau') {
+                component += 'strong tea';
+            } else if (order.intensity === 'po') {
+                component += 'tea + water';
+            } else {
+            component += 'tea';
+            }
+        break;
+    }
+
     // Condiments
     switch(order.condiment) {
         case 'evaporated':
             result += '-C';
             phonetic += 'SEE ';
+            component += ' + evaporated milk'; // newly added
             // Intensity
             if (order.intensity === 'gau') {
                 result += ' Gau';
@@ -76,13 +100,18 @@ function generateResult() {
                 if (order.sweetness === 'less') {
                     result += ' Siew Dai';
                     phonetic += 'SEW DIE ';
+                    component += ' + less sugar'; // newly added
                 } else if (order.sweetness === 'more') {
                     result += ' Gah Dai';
                     phonetic += 'GAH DIE ';
+                    component += ' + extra sugar'; // newly added
+                } else {                           //new added
+                    component += ' + sugar';    //new added
                 }
             } else {
                 result += ' Kosong';
                 phonetic += 'KOH-song ';
+                component += ' + no sugar'; // newly added
             }
             break;
             
@@ -100,14 +129,20 @@ function generateResult() {
             if (order.sweetness === 'less') {
                 result += ' Siew Dai';
                 phonetic += 'SEW DIE ';
+                component += ' + less condensed milk'; // newly added
             } else if (order.sweetness === 'more') {
                 result += ' Gah Dai';
                 phonetic += 'GAH DIE ';
+                component += ' + extra condensed milk'; // newly added
+            } else {                                    // newly added
+                component += ' + condensed milk'; // newly added
             }
             break;
+
         case 'sugar':
             result += '-O';
             phonetic += 'OH ';
+
             // Intensity
             if (order.intensity === 'gau') {
                 result += ' Gau';
@@ -121,9 +156,13 @@ function generateResult() {
             if (order.sweetness === 'less') {
                 result += ' Siew Dai';
                 phonetic += 'SEW DIE ';
+                component += ' + less sugar'; // newly added
             } else if (order.sweetness === 'more') {
                 result += ' Gah Dai';
                 phonetic += 'GAH DIE ';
+                component += ' + extra sugar'; // newly added
+            } else {                        // newly added
+                component += ' + sugar'; // newly added
             }
             break;
         case 'butter':
@@ -138,12 +177,16 @@ function generateResult() {
 
             result += ' Gu You';
             phonetic += 'GOO YOH ';
+            component += ' + butter'; // newly added
             if (order.condensedMilk === 'yes') {
                 // No specific term for this, so add a space it to the description
                 result += ' ';
+                component += ' + condensed milk'; // newly added
             }
             break;
         case 'none':
+            component += ' + no sugar'; // newly added
+
             // Intensity
             if (order.intensity === 'gau') {
                 result += '-O Gau Kosong';
@@ -162,12 +205,18 @@ function generateResult() {
     if (order.temperature === 'cold') {
         result += ' Peng';
         phonetic += 'PENG';
+        component += ', cold'; // newly added
+    } else {                   // newly added
+        component += ', hot'; // newly added
     }
 
     result = result.trim();
     phonetic = phonetic.trim();
 
-    document.getElementById('result').innerHTML = `Your order: ${result}<br>How to pronounce: ${phonetic}`;
+    document.getElementById('result').innerHTML = `
+    <p id="resultLiner">Your order: ${result}</p>
+    <p id="componentLiner"><weak>(${component})</weak></p>
+    <p id="phoneticLiner">How to pronounce: ${phonetic}</p>`;       //newly added
     document.getElementById('result').style.display = 'block';
 
     // Show the reset button after generating the result
